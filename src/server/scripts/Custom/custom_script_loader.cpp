@@ -19,7 +19,10 @@
 
 // The name of this function should match:
 // void Add${NameOfDirectory}Scripts()
-#include "BGReplay.cpp"
+// BGReplay.cpp is compiled as its own translation unit by the scripts module,
+// so including it here would duplicate every definition (LNK4006). Declare
+// the loader entry instead; the implementations come from BGReplay.obj.
+void AddBGReplayScripts();
 
 void AddAutoBalanceScripts();
 void LoadHiddenItemsetBonuses();

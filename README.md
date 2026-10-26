@@ -97,8 +97,10 @@ next to `worldserver.exe`:
 - `libmysql.dll` from `C:\Program Files\MySQL\MySQL Server 8.0\lib`
 - `libcrypto-3-x64.dll` and `libssl-3-x64.dll` from `C:\Program Files\OpenSSL-Win64\bin`
 
-`-DPLAYERBOT=ON` is required. It defaults to off, and without it the bots are not
-compiled in at all. The build takes a while; the bot module alone is large.
+`-DPLAYERBOT=ON` is required, and the Playerbot module is now forced on by
+`src/server/scripts/CMakeLists.txt` (the Custom scripts link against its APIs,
+so a build without it fails at link time). The bots are not compiled in at all
+when it is off. The build takes a while; the bot module alone is large.
 
 ### 3. Load the databases
 

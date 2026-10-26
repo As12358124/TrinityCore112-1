@@ -17,6 +17,17 @@ if(NOT PLAYERBOT)
   list(REMOVE_ITEM SCRIPT_MODULE_LIST Playerbot)
 endif()
 
+# The Custom module (custom_game_lobby, custom_barracks_hardcore,
+# custom_notoriety, custom_bot_stats_feed, custom_tournament_mode,
+# custom_warmode_zone_gate, ...) links against playerbot:: APIs. Disabling
+# the Playerbot module produces LNK2019/LNK2001/LNK1120 at worldserver link
+# time. Force the module in regardless of what the cache or command line
+# says, so a plain re-configure can never silently break the build again.
+set(PLAYERBOT ON CACHE BOOL "Build Playerbot infrastructure module" FORCE)
+list(APPEND SCRIPT_MODULE_LIST Playerbot)
+list(REMOVE_DUPLICATES SCRIPT_MODULE_LIST)
+set(SCRIPTS_PLAYERBOT "static" CACHE STRING "Build type of the Playerbot module." FORCE)
+
 # Make the native install offset available in this scope
 GetInstallOffset(INSTALL_OFFSET)
 

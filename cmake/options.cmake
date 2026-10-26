@@ -9,7 +9,7 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 option(SERVERS          "Build worldserver and authserver"                            1)
-option(PLAYERBOT        "Build Playerbot infrastructure module"                       0)
+option(PLAYERBOT        "Build Playerbot infrastructure module"                       1)
 
 set(SCRIPTS_AVAILABLE_OPTIONS none static dynamic minimal-static minimal-dynamic)
 
